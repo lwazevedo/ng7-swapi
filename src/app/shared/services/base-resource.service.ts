@@ -1,4 +1,4 @@
-import { BaseResourceModel } from './base-resource.model';
+import { BaseResourceModel } from '../models/base-resource.model';
 import { Injector } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
@@ -20,7 +20,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
         return this.http.get(this.apiPath).pipe(
             map(this.jsonDataToResource.bind(this)),
             catchError(this.handleError)
-        )
+        );
     }
 
     // All methods proteted

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '../../shared/shared.module';
+
 
 import { ViewSiteRoutingModule } from './view-site-routing.module';
 import { ViewListComponent } from './view-list/view-list.component';
@@ -7,7 +8,7 @@ import { ViewListComponent } from './view-list/view-list.component';
 @NgModule({
   declarations: [ViewListComponent],
   imports: [
-    CommonModule,
+    SharedModule,
     ViewSiteRoutingModule
   ]
 })

@@ -3,7 +3,7 @@ import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { flatMap, catchError, map } from 'rxjs/operators';
 
-import { BaseResourceService } from './base-resource.service';
+import { BaseResourceService } from '../../../shared/services/base-resource.service';
 import { Site } from './site.model';
 
 import * as moment from 'moment';

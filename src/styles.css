@@ -9,3 +9,11 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#222c30', endColorstr='#253135', GradientType=0) !important;
     color: #fff;
   }
+
+  .color-text-star {
+    color: #ffdf45 !important;
+  }
+
+  .color-text-star:hover {
+    color: #fff !important;
+  }

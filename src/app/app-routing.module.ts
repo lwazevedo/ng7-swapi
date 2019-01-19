@@ -1,7 +1,28 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { BlankTemplateComponent } from './layouts/blank-template/blank-template.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: BlankTemplateComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'site',
+        pathMatch: 'full'
+      },
+      {
+        path: 'site', loadChildren: './pages/view-site/view-site.module#ViewSiteModule'
+      }
+    ]
+  },
+  {
+    path: '**',
+    redirectTo: 'site'
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

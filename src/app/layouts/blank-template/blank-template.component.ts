@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./blank-template.component.css']
 })
 export class BlankTemplateComponent implements OnInit {
-
-  constructor() { }
+  isLoged: boolean;
+  constructor() { this.isLoged = false; }
 
   ngOnInit() {
   }

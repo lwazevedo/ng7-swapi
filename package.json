@@ -27,6 +27,7 @@
     "moment": "^2.23.0",
     "ng-http-loader": "^5.0.0",
     "ng5-validation": "^1.0.0",
+    "ngx-pagination": "^3.2.1",
     "ngx-spinner": "^6.1.2",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",

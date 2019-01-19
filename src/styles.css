@@ -1,19 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
 
 .bg-light-black-gradient {
-    background: #253135 !important;
-    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #253135), color-stop(1, #222c30)) !important;
-    background: -ms-linear-gradient(bottom, #253135, #222c30) !important;
-    background: -moz-linear-gradient(center bottom, #253135 0%, #222c30 100%) !important;
-    background: -o-linear-gradient(#222c30, #253135) !important;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#222c30', endColorstr='#253135', GradientType=0) !important;
-    color: #fff;
-  }
+  background: #253135 !important;
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, #253135),
+    color-stop(1, #222c30)
+  ) !important;
+  background: -ms-linear-gradient(bottom, #253135, #222c30) !important;
+  background: -moz-linear-gradient(
+    center bottom,
+    #253135 0%,
+    #222c30 100%
+  ) !important;
+  background: -o-linear-gradient(#222c30, #253135) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#222c30', endColorstr='#253135', GradientType=0) !important;
+  color: #fff;
+}
 
-  .color-text-star {
-    color: #ffdf45 !important;
-  }
+.color-text-star {
+  color: #ffdf45 !important;
+}
 
-  .color-text-star:hover {
-    color: #fff !important;
-  }
+.color-text-star:hover {
+  color: #fff !important;
+}
+
+.input-group-addon {
+  border-radius: 4px 0 0 4px !important;
+  cursor: pointer !important;
+}
+
+.form-control {
+  border-radius: 4px !important;
+}
+
+.form-control:focus {
+  border-color: #ffdf45 !important;
+}
+
+.ngx-pagination .current {
+  background: #253135 !important;
+  color: #ffdf45 !important;
+}
+
+.ngx-pagination li {
+  border-radius: 4px !important;
+  cursor: pointer !important;
+}
+
+ul.ngx-pagination {
+  margin-right: 20px !important;
+}
+
+.search-link {
+  cursor: pointer;
+  color: #253135;
+}
+
+.search-link:hover {
+  color: #ffdf45;
+}
+
+.search-bar {
+  opacity: 0;
+  max-height: 0px;
+}
+
+.btn-app {
+  color: #fff !important;
+}

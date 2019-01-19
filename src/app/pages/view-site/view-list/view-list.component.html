@@ -1,44 +1,58 @@
 <div class="container">
-  <h2 class="page-header">Movies List</h2>
-  <div class="row">
-    <ng-container *ngFor="let film of resources.results">
-      <div class="col-md-3 col-sm-6 col-xs-12">        
-        <div class="small-box bg-light-black-gradient">
-          <div class="inner">
-            <h4>{{film.title}}</h4>
 
-            <span> Director: <p>{{film.director}}</p> </span>
+  <section  class="content-header">
+    <h2 class="page-header">Movies List
+      <a (click)="toggleSearch()" class="search-link pull-right">
+        <span *ngIf="iptSearch.value"><small>"{{iptSearch.value}}"</small></span> <i class="fa fa-search"></i>
+      </a>
+    </h2>
+    <!-- <h1>
+    </h1> -->
+    <div class="row">
+      <div class="col-xs-12 search-bar" [@toggleSearch]="searchBarState">
+        <form [formGroup]="searchForm">
+          <div class="form-group">
+            <input type="text" #iptSearch formControlName="searchControl" class="form-control" placeholder="O que você está procurando?">
           </div>
-          <div class="icon">
-            <i class="fa fa-arrow-circle-right"></i>
-          </div>
-          <a href="#" class="small-box-footer color-text-star">
-            More info <i class="fa fa-arrow-circle-right"></i>
-          </a>
-        </div>
-      </div>
-    </ng-container>
-  </div>
-  <!-- <div class="row">
-    <div class="col-md-4" *ngFor="let film of resources.results">
-      <div class="box box-widget widget-user-2">
-        <div class="widget-user-header bg-light-black-gradient">
-          <div class="widget-user-image">
-            <img class="img-circle" src="../../../../assets/imgs/logo_films.jpeg" alt="film.title">
-          </div>
-          <h4 class="widget-user-desc">{{film.title}}</h4>
-          <h6 class="widget-user-desc">{{film.director}}</h6>
-        </div>
-        <div class="box-footer no-padding">
-          <ul class="nav nav-stacked">
-            <li><a href="#">Characters <span class="pull-right badge bg-blue">{{film.characters.length}}</span></a></li>
-            <li><a href="#">Planets <span class="pull-right badge bg-blue">{{film.planets.length}}</span></a></li>
-            <li><a href="#">Starships<span class="pull-right badge bg-blue">{{film.starships.length}}</span></a></li>
-            <li><a href="#">Vehicles<span class="pull-right badge bg-blue">{{film.vehicles.length}}</span></a></li>
-            <li><a href="#">Species <span class="pull-right badge bg-blue">{{film.species.length}}</span></a></li>
-          </ul>
-        </div>
+        </form>
       </div>
     </div>
-  </div> -->
+  </section>
+  <div *ngIf="resources?.results?.length < 1" class="row">
+    <div class="col-xs-12 text-center">
+      <p>Movie not found!...</p>
+      <!-- <a class="btn btn-app bg-light-black-gradient" (click)="ngOnInit()">
+          <i class="fa fa-repeat color-text-star"></i> <p>Clear</p>  
+      </a> -->
+    </div>
+  </div>
+  <div class="row">
+    <div *ngIf="resources?.count > 0" class="row">
+      <div class="col-xs-12">
+        <pagination-controls (pageChange)="pageChanged($event)" id="server" class="pull-right"></pagination-controls>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <ng-container *ngFor="let film of resources.results | paginate: { id: 'server', itemsPerPage: 10, currentPage: p , totalItems: resources.count}">
+        <div class="col-sm-4 col-xs-12">
+          <div class="small-box bg-light-black-gradient">
+            <div class="inner">
+              <h4>{{film.title}}</h4>
+              <span> Director: <p><small>{{film.director}}</small></p> </span>
+            </div>
+            <div class="icon">
+              <i class="fa fa-video-camera"></i>
+            </div>
+            <a class="small-box-footer color-text-star">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
 </div>

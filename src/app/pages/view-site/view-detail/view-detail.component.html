@@ -26,34 +26,8 @@
         </ul>
         <div class="tab-content">
           <div class="tab-pane active" id="tab_1">
-            <h2 class="page-header">
-              <i class="fa  fa-video-camera"></i> {{resources.title}}
-              <small class="pull-right">Release date: {{resources.release_date}}</small>
-            </h2>
-
-            <div class="row invoice-info">
-              <div class="col-sm-4 invoice-col">
-                Director
-                <address>
-                  <strong>{{resources.director}}</strong><br>
-                </address>
-                Producer
-                <address>
-                  <strong>{{resources.producer}}</strong><br>
-                </address>
-                Episode
-                <address>
-                  <strong>{{resources.episode_id}}</strong><br>
-                </address>
-              </div>
-              <!-- /.col -->
-              <div class="col-sm-8 invoice-col">
-                Opening Crawl
-                <address>
-                  <strong>{{resources.opening_crawl}}</strong><br>
-                </address>
-              </div>
-            </div>
+            <app-head [title]="resources?.title" [ocultIcon]="false"></app-head>
+            <app-info [data]="resources" [view]="['director', 'producer', 'episode_id', 'opening_crawl']"></app-info>
           </div>
           <!-- /.tab-pane -->
           <div class="tab-pane" id="tab_2">

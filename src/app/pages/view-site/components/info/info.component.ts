@@ -10,14 +10,17 @@ import * as _ from 'lodash';
 export class InfoComponent implements OnInit {
   @Input() data: any;
   @Input() omit: Array<any[]>;
+  @Input() view: Array<any[]>;
   constructor() { }
 
-  ngOnInit() {
-    this.omitField();
-  }
+  ngOnInit() { }
 
-  omitField() {
-    this.data = _.omit(this.data, this.omit);
+  omitOnViewField(data) {
+    if (!_.isUndefined(this.omit) && this.omit.length > 0) {
+      return _.omit(data, this.omit) || {};
+    } else {
+      return _.pick(data, this.view) || {};
+    }
   }
 
   transformData(value) {

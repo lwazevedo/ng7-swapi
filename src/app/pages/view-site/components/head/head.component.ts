@@ -7,6 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class HeadComponent implements OnInit {
   @Input() title: string;
+  @Input() ocultIcon: Boolean;
   @Output() ocultViewDetail = new EventEmitter();
   constructor() { }
 

@@ -23,6 +23,10 @@ const routes: Routes = [
         loadChildren: './pages/people/people.module#PeopleModule'
       },
       {
+        path: 'planets',
+        loadChildren: './pages/planets/planets.module#PlanetsModule'
+      },
+      {
         path: 'authentication',
         loadChildren: './pages/authentication/authentication.module#AuthenticationModule'
       }

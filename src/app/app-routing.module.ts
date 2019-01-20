@@ -3,8 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { BlankTemplateComponent } from './layouts/blank-template/blank-template.component';
 
-import { AuthGuardGuard } from './guard/auth-guard.guard';
-
 const routes: Routes = [
   {
     path: '',
@@ -25,10 +23,6 @@ const routes: Routes = [
       {
         path: 'planets',
         loadChildren: './pages/planets/planets.module#PlanetsModule'
-      },
-      {
-        path: 'authentication',
-        loadChildren: './pages/authentication/authentication.module#AuthenticationModule'
       }
     ]
   },

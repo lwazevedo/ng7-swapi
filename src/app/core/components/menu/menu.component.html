@@ -1,3 +1,63 @@
-<p>
-  menu works!
-</p>
+<aside class="main-sidebar">
+  <section class="sidebar">
+    <!-- Sidebar Menu -->
+    <ul class="sidebar-menu" data-widget="tree">
+
+      <!-- Dynamic Private Menú Generation -->
+      <ng-container *ngFor="let menu of links; let i = index">
+        <li routerLinkActiveOptions="{exact: true}" [class.treeview]="menu.sublinks" [ngClass]="{'active': selectedItemIndex == i}"
+          [class.header]="menu.header" routerLinkActive="active">
+
+          <!-- header items -->
+          <span *ngIf="menu.header" class="text-uppercase">{{ menu.header }}</span>
+
+          <a *ngIf="menu.external" href="{{ menu.link }}" target="{{menu.target}}">
+            <i class="fa fa-{{ menu.icon }}"></i> <span>{{ menu.title }}</span>
+          </a>
+
+          <!-- menu WITHOUT childs -->
+          <a *ngIf="!hasSublinks(menu) && !menu.header && !menu.external" routerLink="{{ menu.link }}">
+            <i class="fa fa-{{ menu.icon }}"></i> <span>{{ menu.title }}</span>
+          </a>
+
+
+          <!-- menu WITH childs -->
+          <a *ngIf="hasSublinks(menu) && !menu.header && !menu.external" role="button" (click)="selectedMenuItem(i)">
+            <i class="fa fa-{{ menu.icon }}"></i> <span>{{ menu.title }}</span>
+            <span *ngIf="hasSublinks(menu)" class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+
+          <!-- menu child items -->
+          <ul *ngIf="hasSublinks(menu)" class="treeview-menu">
+            <li *ngFor="let subMenu of menu.sublinks" routerLinkActive="active" routerLinkActiveOptions="{exact: true}"
+              [class.treeview]="subMenu.sublinks">
+              <a *ngIf="!hasSublinks(subMenu)" routerLink="{{ subMenu.link }}">
+                <i class="fa fa-{{ subMenu.icon }}"></i>
+                <span>{{ subMenu.title }}</span>
+              </a>
+              <a *ngIf="hasSublinks(subMenu) && !menu.header" role="button" (click)="selectedMenuItem(i)">
+                <i class="fa fa-{{ subMenu.icon }}"></i> <span>{{ subMenu.title }}</span>
+                <span *ngIf="hasSublinks(subMenu)" class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul *ngIf="hasSublinks(subMenu)" class="treeview-menu">
+                <li *ngFor="let subMenuSublinks of subMenu.sublinks" routerLinkActive="active" routerLinkActiveOptions="{exact: true}"
+                  [class.treeview]="subMenuSublinks.sublinks">
+                  <a *ngIf="!hasSublinks(subMenuSublinks)" routerLink="{{ subMenuSublinks.link }}">
+                    <i class="fa fa-{{ subMenuSublinks.icon }}"></i>
+                    <span>{{ subMenuSublinks.title }}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+        </li>
+      </ng-container>
+    </ul>
+    <!-- /.sidebar-menu -->
+  </section>
+</aside>

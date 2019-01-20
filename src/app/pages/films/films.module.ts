@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '../../shared/shared.module';
+
 
 import { FilmsRoutingModule } from './films-routing.module';
+import { FilmsViewComponent } from './films-view/films-view.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [FilmsViewComponent],
   imports: [
-    CommonModule,
+    SharedModule,
     FilmsRoutingModule
   ]
 })

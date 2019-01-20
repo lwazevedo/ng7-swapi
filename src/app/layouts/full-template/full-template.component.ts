@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./full-template.component.css']
 })
 export class FullTemplateComponent implements OnInit {
-
-  constructor() { }
+  isLoged: boolean;
+  constructor() { this.isLoged = Boolean(localStorage.getItem('isLoggedin')); }
 
   ngOnInit() {
   }

@@ -8,13 +8,13 @@ import { RouterModule } from '@angular/router';
 
 
 
-import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
-import { MenuComponent } from './components/menu/menu.component';
+
 
 @NgModule({
-  declarations: [BreadcrumbComponent, FooterComponent, HeaderComponent, MenuComponent],
+  declarations: [FooterComponent, HeaderComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -28,10 +28,8 @@ import { MenuComponent } from './components/menu/menu.component';
     BrowserAnimationsModule,
     HttpClientModule,
     NgHttpLoaderModule,
-    BreadcrumbComponent,
-    FooterComponent,
     HeaderComponent,
-    MenuComponent
+    FooterComponent,
   ]
 })
 export class CoreModule { }

@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   submitForm() {
     this.submittingForm = true;
     localStorage.setItem('isLoggedin', 'true');
-    // this.router.navigate(['/films']);
+    this.router.navigate(['/site']);
   }
 
   // para buscar os nomes de campos com maior facilidade

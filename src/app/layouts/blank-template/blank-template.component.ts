@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blank-template',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlankTemplateComponent implements OnInit {
   isLoged: boolean;
-  constructor() { this.isLoged = false; }
+  constructor(private router: Router) {
+    this.isLoged = Boolean(localStorage.getItem('isLoggedin'));
+    console.log(this.isLoged);
+  }
 
   ngOnInit() {
+  }
+
+  logout() {
+    console.log('console.log');
+    localStorage.removeItem('isLoggedin');
+    this.router.navigate(['/site']);
   }
 
 }

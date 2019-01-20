@@ -5,7 +5,7 @@ import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BlankTemplateComponent } from './layouts/blank-template/blank-template.component';
-import { FullTemplateComponent } from './layouts/full-template/full-template.component';
+
 
 
 
@@ -13,8 +13,7 @@ import { FullTemplateComponent } from './layouts/full-template/full-template.com
 @NgModule({
   declarations: [
     AppComponent,
-    BlankTemplateComponent,
-    FullTemplateComponent
+    BlankTemplateComponent
   ],
   imports: [
     CoreModule,

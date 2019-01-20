@@ -1,10 +1,14 @@
-
 <header class="main-header">
   <a routerLink="/site" href="#" class="logo bg-light-black-gradient">
     <span class="logo-mini"><b>S</b>W</span>
     <span class="logo-lg"><b>Star</b>Wars</span>
   </a>
   <nav class="navbar navbar-static-top bg-light-black-gradient">
+    <ul class="nav navbar-nav">
+      <li><a class="pull-left color-text-star" [routerLink]="['/site']" routerLinkActive="active">Films</a></li>
+      <li><a class="pull-left color-text-star" [routerLink]="['/people']" routerLinkActive="active">Peoples</a></li>
+      <li><a class="pull-left color-text-star" href="">Planets</a></li>
+    </ul>
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
         <li *ngIf="isLoged" class="dropdown user user-menu">
@@ -13,9 +17,9 @@
           </a>
         </li>
         <li>
-          <a *ngIf="!isLoged" routerLink="/authentication" data-toggle="control-sidebar"><i class="fa fa-mail-forward"></i>
+          <!-- <a *ngIf="!isLoged" routerLink="/authentication" data-toggle="control-sidebar"><i class="fa fa-mail-forward"></i>
             Login
-          </a>
+          </a> -->
         </li>
       </ul>
     </div>

@@ -3,11 +3,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
-
-import { Site } from '../../shared/site.model';
-import { SiteService } from '../../shared/site.service';
-
-
+import { People } from '../../shared/people.model';
+import { PeopleService } from './../../shared/people.service';
 
 @Component({
   selector: 'app-view-list',
@@ -36,29 +33,32 @@ import { SiteService } from '../../shared/site.service';
   ]
 })
 export class ViewListComponent implements OnInit {
-
-  resources: Site[] = [];
+  peoples: People[] = [];
   searchBarState = 'hidden';
   listState = 'ready';
+  idTable = 'listPeople';
   p = 1;
   searchForm: FormGroup;
   searchControl: FormControl;
-
-  constructor(
-    private resourceService: SiteService,
+  constructor(private resourceService: PeopleService,
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute) { this.search(); }
 
   ngOnInit() {
     this.resourceService.getAll().subscribe(
-      resources => this.resources = resources,
+      resources => this.peoples = resources,
       error => alert('Erro ao carregar a lista')
     );
   }
 
   pageChanged(evt) {
-    console.log(evt);
+    this.resourceService.getAll(`?page=${evt}`)
+    .subscribe(
+      resources => this.peoples = resources,
+      error => alert('Erro ao carregar a lista')
+    );
+    this.p = evt;
   }
 
   search() {
@@ -70,9 +70,9 @@ export class ViewListComponent implements OnInit {
     this.searchControl.valueChanges.pipe(
       debounceTime(500),
       distinctUntilChanged(),
-      switchMap(searchTerm => this.resourceService.getAll(`/?search=${searchTerm}`))
+      switchMap(searchTerm => this.resourceService.getAll(`?search=${searchTerm}`))
     ).subscribe(
-      resources => this.resources = resources,
+      resources => this.peoples = resources,
       error => alert('Erro ao carregar a lista')
     );
   }
@@ -81,7 +81,7 @@ export class ViewListComponent implements OnInit {
     this.searchBarState = this.searchBarState === 'hidden' ? 'visible' : 'hidden';
   }
 
-  detailFilm(id) {
+  detailPeople(id) {
     id = btoa(id.match(/\d/g)[0]).toString();
     this.router.navigate(['/site/detail', id], {relativeTo: this.route});
   }

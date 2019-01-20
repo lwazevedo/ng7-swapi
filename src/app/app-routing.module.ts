@@ -19,6 +19,10 @@ const routes: Routes = [
         path: 'site', loadChildren: './pages/view-site/view-site.module#ViewSiteModule'
       },
       {
+        path: 'people',
+        loadChildren: './pages/people/people.module#PeopleModule'
+      },
+      {
         path: 'authentication',
         loadChildren: './pages/authentication/authentication.module#AuthenticationModule'
       }

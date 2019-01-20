@@ -28,6 +28,11 @@
   color: #fff !important;
 }
 
+a.pull-left.color-text-star.active {
+  color: #fff !important;
+  background-color: #283438 !important;
+}
+
 .input-group-addon {
   border-radius: 4px 0 0 4px !important;
   cursor: pointer !important;

@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-xs-12">
-    <pagination-controls (pageChange)="p = $event" class="pull-right"></pagination-controls>
+    <pagination-controls (pageChange)="p = $event" id="{{idTable}}" class="pull-right"></pagination-controls>
     <div class="table-responsive">
       <table class="table">
         <tr>
           <th style="width:50%" *ngFor="let item of headtable">{{item}}</th>
         </tr>
-        <tr *ngFor="let item of data | paginate: {itemsPerPage: 10, currentPage: p , totalItems: data.length}">
+        <tr *ngFor="let item of data | paginate: {id: idTable, itemsPerPage: 10, currentPage: p , totalItems: data.length}">
           <td *ngFor="let subitem of omitOnViewField(item) | keyvalue">{{subitem.value}}</td>
           <td><button type="button" (click)="viewDetail(item)" class="btn btn-primary btn-xs btn-flat ">View</button></td>
         </tr>

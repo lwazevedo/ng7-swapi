@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-head',
-  templateUrl: './head.component.html',
-  styleUrls: ['./head.component.css']
+  selector: 'app-head-detail',
+  templateUrl: './head-detail.component.html',
+  styleUrls: ['./head-detail.component.css']
 })
-export class HeadComponent implements OnInit {
+export class HeadDetailComponent implements OnInit {
   @Input() title: string;
   @Input() ocultIcon: Boolean;
   @Output() ocultViewDetail = new EventEmitter();
@@ -15,6 +15,7 @@ export class HeadComponent implements OnInit {
   }
 
   ocultDetail() {
-    this.ocultViewDetail.emit({viewDetail: false});
+    this.ocultViewDetail.emit({ viewDetail: false });
   }
+
 }

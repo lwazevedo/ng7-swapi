@@ -2,12 +2,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as _ from 'lodash';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: 'app-list-detail',
+  templateUrl: './list-detail.component.html',
+  styleUrls: ['./list-detail.component.css']
 })
-export class ListComponent implements OnInit {
+export class ListDetailComponent implements OnInit {
   @Input() data: Array<any[]>;
+  @Input() idTable: string;
   @Output() viewDetailItem = new EventEmitter();
   @Input() omit: Array<any[]>;
   @Input() view: Array<any[]>;
@@ -26,10 +27,11 @@ export class ListComponent implements OnInit {
 
   omitOnViewField(data) {
     if (!_.isUndefined(this.omit) && this.omit.length > 0) {
-      return _.omit(data, this.omit) || {};
+      data = _.omit(data, this.omit) || {};
     } else {
-      return _.pick(data, this.view) || {};
+      data = _.pick(data, this.view) || {};
     }
+    return Object.assign({}, _.sortBy(data, this.headtable[0]));
   }
 
   transformData(value) {

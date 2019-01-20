@@ -26,52 +26,52 @@
         </ul>
         <div class="tab-content">
           <div class="tab-pane active" id="tab_1">
-            <app-head [title]="resources?.title" [ocultIcon]="true"></app-head>
-            <app-info [data]="resources" [view]="['director', 'producer', 'episode_id', 'opening_crawl']"></app-info>
+            <app-head-detail [title]="resources?.title" [ocultIcon]="true"></app-head-detail>
+            <app-info-detail [data]="resources" [view]="['director', 'producer', 'episode_id', 'opening_crawl']"></app-info-detail>
           </div>
           <div class="tab-pane" id="tab_2">
             <ng-container *ngIf="viewList" [@viewDeitalItem]="viewDetailItemState">
-              <app-head [title]="dataDetail.name" [ocultIcon]="false" (ocultViewDetail)='ocultViewDetail($event)'></app-head>
-              <app-info [data]="dataDetail" [omit]="['films','created','url','edited', 'homeworld','species', 'vehicles','starships']"></app-info>
+              <app-head-detail [title]="dataDetail.name" [ocultIcon]="false" (ocultViewDetail)='ocultViewDetail($event)'></app-head-detail>
+              <app-info-detail [data]="dataDetail" [omit]="['films','created','url','edited', 'homeworld','species', 'vehicles','starships']"></app-info-detail>
             </ng-container>
             <ng-container *ngIf="otherInformation.length > 0 && !viewList">
-              <app-list [data]="otherInformation" [view]="['name','birth_year']" (viewDetailItem)="viewDetailItem($event)"></app-list>
+              <app-list-detail [data]="otherInformation" [idTable]="'people'" [view]="['name','birth_year']" (viewDetailItem)="viewDetailItem($event)"></app-list-detail>
             </ng-container>
           </div>
           <div class="tab-pane" id="tab_3">
             <ng-container *ngIf="viewList" [@viewDeitalItem]="viewDetailItemState">
-              <app-head [title]="dataDetail.name" [ocultIcon]="false" (ocultViewDetail)='ocultViewDetail($event)'></app-head>
-              <app-info [data]="dataDetail" [omit]="['films','residents','url','edited','created']"></app-info>
+              <app-head-detail [title]="dataDetail.name" [ocultIcon]="false" (ocultViewDetail)='ocultViewDetail($event)'></app-head-detail>
+              <app-info-detail [data]="dataDetail" [omit]="['films','residents','url','edited','created']"></app-info-detail>
             </ng-container>
             <ng-container *ngIf="otherInformation.length > 0 && !viewList">
-              <app-list [data]="otherInformation" [view]="['name','population']" (viewDetailItem)="viewDetailItem($event)"></app-list>
+              <app-list-detail [data]="otherInformation" [idTable]="'planets'" [view]="['name','population']" (viewDetailItem)="viewDetailItem($event)"></app-list-detail>
             </ng-container>
           </div>
           <div class="tab-pane" id="tab_4">
             <ng-container *ngIf="viewList" [@viewDeitalItem]="viewDetailItemState">
-              <app-head [title]="dataDetail.name" [ocultIcon]="false" (ocultViewDetail)='ocultViewDetail($event)'></app-head>
-              <app-info [data]="dataDetail" [omit]="['films','pilots','url','edited','created']"></app-info>
+              <app-head-detail [title]="dataDetail.name" [ocultIcon]="false" (ocultViewDetail)='ocultViewDetail($event)'></app-head-detail>
+              <app-info-detail [data]="dataDetail" [omit]="['films','pilots','url','edited','created']"></app-info-detail>
             </ng-container>
             <ng-container *ngIf="otherInformation.length > 0 && !viewList">
-              <app-list [data]="otherInformation" [view]="['name','model']" (viewDetailItem)="viewDetailItem($event)"></app-list>
+              <app-list-detail [data]="otherInformation" [idTable]="'starships'" [view]="['name','model']" (viewDetailItem)="viewDetailItem($event)"></app-list-detail>
             </ng-container>
           </div>
           <div class="tab-pane" id="tab_5">
             <ng-container *ngIf="viewList" [@viewDeitalItem]="viewDetailItemState">
-              <app-head [title]="dataDetail.name" [ocultIcon]="false" (ocultViewDetail)='ocultViewDetail($event)'></app-head>
-              <app-info [data]="dataDetail" [omit]="['films','pilots','created','url','edited']"></app-info>
+              <app-head-detail [title]="dataDetail.name" [ocultIcon]="false" (ocultViewDetail)='ocultViewDetail($event)'></app-head-detail>
+              <app-info-detail [data]="dataDetail" [omit]="['films','pilots','created','url','edited']"></app-info-detail>
             </ng-container>
             <ng-container *ngIf="otherInformation.length > 0 && !viewList">
-              <app-list [data]="otherInformation" [view]="['name','model']" (viewDetailItem)="viewDetailItem($event)"></app-list>
+              <app-list-detail [data]="otherInformation" [idTable]="'vehicles'" [view]="['name','model']" (viewDetailItem)="viewDetailItem($event)"></app-list-detail>
             </ng-container>
           </div>
           <div class="tab-pane" id="tab_6">
             <ng-container *ngIf="viewList" [@viewDeitalItem]="viewDetailItemState">
-              <app-head [title]="dataDetail.name" [ocultIcon]="false" (ocultViewDetail)='ocultViewDetail($event)'></app-head>
-              <app-info [data]="dataDetail" [omit]="['films','people','created','url','edited','homeworld']"></app-info>
+              <app-head-detail [title]="dataDetail.name" [ocultIcon]="false" (ocultViewDetail)='ocultViewDetail($event)'></app-head-detail>
+              <app-info-detail [data]="dataDetail" [omit]="['films','people','created','url','edited','homeworld']"></app-info-detail>
             </ng-container>
             <ng-container *ngIf="otherInformation.length > 0 && !viewList">
-              <app-list [data]="otherInformation" [view]="['name','classification']" (viewDetailItem)="viewDetailItem($event)"></app-list>
+              <app-list-detail [data]="otherInformation" [idTable]="'species'" [view]="['name','classification']" (viewDetailItem)="viewDetailItem($event)"></app-list-detail>
             </ng-container>
           </div>
         </div>

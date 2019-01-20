@@ -1,0 +1,11 @@
+<div class="row invoice-info">
+  <ng-container *ngFor="let item of omitOnViewField(data) | keyvalue:ascOrder">
+    <div class="col-sm-4 invoice-col">
+      {{transformData(item.key)}}
+      <address>
+        <strong>{{item.value}}</strong>
+      </address>
+    </div>
+  </ng-container>
+  <!-- /.col -->
+</div>

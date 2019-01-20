@@ -1,19 +1,19 @@
 import { Component, OnInit, Input } from '@angular/core';
 import * as _ from 'lodash';
 
-
 @Component({
-  selector: 'app-info',
-  templateUrl: './info.component.html',
-  styleUrls: ['./info.component.css']
+  selector: 'app-info-detail',
+  templateUrl: './info-detail.component.html',
+  styleUrls: ['./info-detail.component.css']
 })
-export class InfoComponent implements OnInit {
+export class InfoDetailComponent implements OnInit {
   @Input() data: any;
   @Input() omit: Array<any[]>;
   @Input() view: Array<any[]>;
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   omitOnViewField(data) {
     if (!_.isUndefined(this.omit) && this.omit.length > 0) {

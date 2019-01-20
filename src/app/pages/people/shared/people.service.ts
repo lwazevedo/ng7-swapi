@@ -11,6 +11,6 @@ import { People } from './people.model';
 export class PeopleService extends BaseResourceService<People> {
 
   constructor(protected injector: Injector) {
-      super('https://swapi.co/api/people/', injector, People.fromJson);
+      super('https://swapi.co/api/people', injector, People.fromJson);
   }
 }

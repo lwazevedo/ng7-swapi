@@ -53,7 +53,7 @@ export class ViewListComponent implements OnInit {
   }
 
   pageChanged(evt) {
-    this.resourceService.getAll(`?page=${evt}`)
+    this.resourceService.getAll(`/?page=${evt}`)
     .subscribe(
       resources => this.peoples = resources,
       error => alert('Erro ao carregar a lista')
@@ -70,7 +70,7 @@ export class ViewListComponent implements OnInit {
     this.searchControl.valueChanges.pipe(
       debounceTime(500),
       distinctUntilChanged(),
-      switchMap(searchTerm => this.resourceService.getAll(`?search=${searchTerm}`))
+      switchMap(searchTerm => this.resourceService.getAll(`/?search=${searchTerm}`))
     ).subscribe(
       resources => this.peoples = resources,
       error => alert('Erro ao carregar a lista')
@@ -83,7 +83,7 @@ export class ViewListComponent implements OnInit {
 
   detailPeople(id) {
     id = btoa(id.match(/\d/g)[0]).toString();
-    this.router.navigate(['/site/detail', id], {relativeTo: this.route});
+    this.router.navigate(['/people/detail', id], {relativeTo: this.route});
   }
 
 }

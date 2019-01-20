@@ -1,3 +1,82 @@
-<p>
-  view-detail works!
-</p>
+<div class="container ">
+
+    <section class="content-header">
+      <h2 class="page-header">People detail
+        <a (click)="backHome()" class="search-link pull-right">
+          <span><small></small></span> <i class="fa fa-mail-reply"></i>
+        </a>
+      </h2>
+    </section>
+  
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="nav-tabs-custom">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab_1" data-toggle="tab">People</a></li>
+            <li><a href="#tab_2" *ngIf="resources?.characters?.length > 0" (click)="viewDetail(resources.characters)"
+                data-toggle="tab">Peoples</a></li>
+            <li><a href="#tab_3" *ngIf="resources?.planets?.length > 0" (click)="viewDetail(resources.planets)"
+                data-toggle="tab">Planets</a></li>
+            <li><a href="#tab_4" *ngIf="resources?.starships?.length > 0" (click)="viewDetail(resources.starships)"
+                data-toggle="tab">Starships</a></li>
+            <li><a href="#tab_5" *ngIf="resources?.vehicles?.length > 0" (click)="viewDetail(resources.vehicles)"
+                data-toggle="tab">Vehicles</a></li>
+            <li><a href="#tab_6" *ngIf="resources?.species?.length > 0" (click)="viewDetail(resources.species)"
+                data-toggle="tab">Species</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab_1">
+              <app-head-detail [title]="resources?.name" [ocultIcon]="true"></app-head-detail>
+              <app-info-detail [data]="resources" [omit]="['id','homeworld', 'films', 'species', 'vehicles','starships', 'created', 'edited','url']"></app-info-detail>
+            </div>
+            <div class="tab-pane" id="tab_2">
+              <ng-container *ngIf="viewList" [@viewDeitalItem]="viewDetailItemState">
+                <app-head-detail [title]="dataDetail.name" [ocultIcon]="false" (ocultViewDetail)='ocultViewDetail($event)'></app-head-detail>
+                <app-info-detail [data]="dataDetail" [omit]="['films','created','url','edited', 'homeworld','species', 'vehicles','starships']"></app-info-detail>
+              </ng-container>
+              <ng-container *ngIf="otherInformation.length > 0 && !viewList">
+                <app-list-detail [data]="otherInformation" [idTable]="'people'" [view]="['name','birth_year']" (viewDetailItem)="viewDetailItem($event)"></app-list-detail>
+              </ng-container>
+            </div>
+            <div class="tab-pane" id="tab_3">
+              <ng-container *ngIf="viewList" [@viewDeitalItem]="viewDetailItemState">
+                <app-head-detail [title]="dataDetail.name" [ocultIcon]="false" (ocultViewDetail)='ocultViewDetail($event)'></app-head-detail>
+                <app-info-detail [data]="dataDetail" [omit]="['films','residents','url','edited','created']"></app-info-detail>
+              </ng-container>
+              <ng-container *ngIf="otherInformation.length > 0 && !viewList">
+                <app-list-detail [data]="otherInformation" [idTable]="'planets'" [view]="['name','population']" (viewDetailItem)="viewDetailItem($event)"></app-list-detail>
+              </ng-container>
+            </div>
+            <div class="tab-pane" id="tab_4">
+              <ng-container *ngIf="viewList" [@viewDeitalItem]="viewDetailItemState">
+                <app-head-detail [title]="dataDetail.name" [ocultIcon]="false" (ocultViewDetail)='ocultViewDetail($event)'></app-head-detail>
+                <app-info-detail [data]="dataDetail" [omit]="['films','pilots','url','edited','created']"></app-info-detail>
+              </ng-container>
+              <ng-container *ngIf="otherInformation.length > 0 && !viewList">
+                <app-list-detail [data]="otherInformation" [idTable]="'starships'" [view]="['name','model']" (viewDetailItem)="viewDetailItem($event)"></app-list-detail>
+              </ng-container>
+            </div>
+            <div class="tab-pane" id="tab_5">
+              <ng-container *ngIf="viewList" [@viewDeitalItem]="viewDetailItemState">
+                <app-head-detail [title]="dataDetail.name" [ocultIcon]="false" (ocultViewDetail)='ocultViewDetail($event)'></app-head-detail>
+                <app-info-detail [data]="dataDetail" [omit]="['films','pilots','created','url','edited']"></app-info-detail>
+              </ng-container>
+              <ng-container *ngIf="otherInformation.length > 0 && !viewList">
+                <app-list-detail [data]="otherInformation" [idTable]="'vehicles'" [view]="['name','model']" (viewDetailItem)="viewDetailItem($event)"></app-list-detail>
+              </ng-container>
+            </div>
+            <div class="tab-pane" id="tab_6">
+              <ng-container *ngIf="viewList" [@viewDeitalItem]="viewDetailItemState">
+                <app-head-detail [title]="dataDetail.name" [ocultIcon]="false" (ocultViewDetail)='ocultViewDetail($event)'></app-head-detail>
+                <app-info-detail [data]="dataDetail" [omit]="['films','people','created','url','edited','homeworld']"></app-info-detail>
+              </ng-container>
+              <ng-container *ngIf="otherInformation.length > 0 && !viewList">
+                <app-list-detail [data]="otherInformation" [idTable]="'species'" [view]="['name','classification']" (viewDetailItem)="viewDetailItem($event)"></app-list-detail>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        <!-- nav-tabs-custom -->
+      </div>
+    </div>
+  </div>

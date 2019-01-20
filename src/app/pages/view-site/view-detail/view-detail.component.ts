@@ -12,6 +12,7 @@ export class ViewDetailComponent implements OnInit {
 
   paramURL: string;
   resources: Site[] = [];
+  otherInformation = [];
   constructor(private route: ActivatedRoute, private router: Router,  private resourceService: SiteService) { }
 
   ngOnInit() {
@@ -27,8 +28,9 @@ export class ViewDetailComponent implements OnInit {
   }
 
   viewDetail(details: string[]) {
+    this.otherInformation = [];
     this.resourceService.getMultipleAll(details)
-    .subscribe(r => console.log(r));
+    .subscribe(otherInformation => this.otherInformation.push(otherInformation));
   }
 
   backHome() {

@@ -1,4 +1,5 @@
 <div class="container ">
+
   <section class="content-header">
     <h2 class="page-header">Movie detail
       <a (click)="backHome()" class="search-link pull-right">
@@ -6,75 +7,85 @@
       </a>
     </h2>
   </section>
-  <section class="invoice">
-    <div class="row">
-      <div class="col-xs-12">
-        <h2 class="page-header">
-          <i class="fa  fa-video-camera"></i> {{resources.title}}
-          <small class="pull-right">Release date: {{resources.release_date}}</small>
-        </h2>
-      </div>
-      <!-- /.col -->
-    </div>
-    <div class="row invoice-info">
-      <div class="col-sm-4 invoice-col">
-        Director
-        <address>
-          <strong>{{resources.director}}</strong><br>
-        </address>
-        Producer
-        <address>
-          <strong>{{resources.producer}}</strong><br>
-        </address>
-        Episode
-        <address>
-          <strong>{{resources.episode_id}}</strong><br>
-        </address>
-      </div>
-      <!-- /.col -->
-      <div class="col-sm-8 invoice-col">
-        Opening Crawl
-        <address>
-          <strong>{{resources.opening_crawl}}</strong><br>
-        </address>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <p class="lead">Other information</p>
 
-        <div class="table-responsive">
-          <table class="table">
-            <tr *ngIf="resources?.characters?.length > 0">
-              <th style="width:50%">Characters:</th>
-              <td><span class="badge bg-red">{{resources.characters.length}}</span></td>
-              <td><button (click)="viewDetail(resources.characters)" type="button" class="btn btn-primary btn-xs btn-flat ">View</button></td>
-            </tr>
-            <tr *ngIf="resources?.planets?.length > 0">
-              <th>Planets:</th>
-              <td><span class="badge bg-red">{{resources.planets.length}}</span></td>
-              <td><button (click)="viewDetail(resources.planets)" type="button" class="btn btn-primary btn-xs btn-flat ">View</button></td>
-            </tr>
-            <tr *ngIf="resources?.starships?.length > 0">
-              <th>Starships:</th>
-              <td><span class="badge bg-red">{{resources.starships.length}}</span></td>
-              <td><button (click)="viewDetail(resources.starships)" type="button" class="btn btn-primary btn-xs btn-flat ">View</button></td>
-            </tr>
-            <tr *ngIf="resources?.vehicles?.length > 0">
-              <th>Vehicles:</th>
-              <td><span class="badge bg-red">{{resources.vehicles.length}}</span></td>
-              <td><button (click)="viewDetail(resources.vehicles)" type="button" class="btn btn-primary btn-xs btn-flat ">View</button></td>
-            </tr>
-            <tr *ngIf="resources?.species?.length > 0">
-              <th>Species:</th>
-              <td><span class="badge bg-red">{{resources.species.length}}</span></td>
-              <td><button (click)="viewDetail(resources.species)" type="button" class="btn btn-primary btn-xs btn-flat ">View</button></td>
-            </tr>
-          </table>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#tab_1" data-toggle="tab">Film</a></li>
+          <li><a href="#tab_2" *ngIf="resources?.characters?.length > 0" (click)="viewDetail(resources.characters)"
+              data-toggle="tab">Peoples</a></li>
+          <li><a href="#tab_3" *ngIf="resources?.planets?.length > 0" (click)="viewDetail(resources.planets)"
+              data-toggle="tab">Planets</a></li>
+          <li><a href="#tab_4" *ngIf="resources?.starships?.length > 0" (click)="viewDetail(resources.starships)"
+              data-toggle="tab">Starships</a></li>
+          <li><a href="#tab_5" *ngIf="resources?.vehicles?.length > 0" (click)="viewDetail(resources.vehicles)"
+              data-toggle="tab">Vehicles</a></li>
+          <li><a href="#tab_6" *ngIf="resources?.species?.length > 0" (click)="viewDetail(resources.species)"
+              data-toggle="tab">Species</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab_1">
+            <h2 class="page-header">
+              <i class="fa  fa-video-camera"></i> {{resources.title}}
+              <small class="pull-right">Release date: {{resources.release_date}}</small>
+            </h2>
+
+            <div class="row invoice-info">
+              <div class="col-sm-4 invoice-col">
+                Director
+                <address>
+                  <strong>{{resources.director}}</strong><br>
+                </address>
+                Producer
+                <address>
+                  <strong>{{resources.producer}}</strong><br>
+                </address>
+                Episode
+                <address>
+                  <strong>{{resources.episode_id}}</strong><br>
+                </address>
+              </div>
+              <!-- /.col -->
+              <div class="col-sm-8 invoice-col">
+                Opening Crawl
+                <address>
+                  <strong>{{resources.opening_crawl}}</strong><br>
+                </address>
+              </div>
+            </div>
+          </div>
+          <!-- /.tab-pane -->
+          <div class="tab-pane" id="tab_2">
+            <app-characters [data]="otherInformation"></app-characters>
+          </div>
+          <!-- /.tab-pane -->
+          <div class="tab-pane" id="tab_3">
+            <app-planets [data]="otherInformation"></app-planets>
+          </div>
+          <!-- /.tab-pane -->
+          <!-- /.tab-pane -->
+          <div class="tab-pane" id="tab_4">
+            <app-starships [data]="otherInformation"></app-starships>
+          </div>
+          <!-- /.tab-pane -->
+          <!-- /.tab-pane -->
+          <div class="tab-pane" id="tab_5">
+            <app-vehicles [data]="otherInformation"></app-vehicles>
+          </div>
+          <!-- /.tab-pane -->
+          <!-- /.tab-pane -->
+          <div class="tab-pane" id="tab_6">
+            <app-species [data]="otherInformation"></app-species>
+
+          </div>
+          <!-- /.tab-pane -->
         </div>
+        <!-- /.tab-content -->
       </div>
-      <!-- /.col -->
+      <!-- nav-tabs-custom -->
     </div>
-  </section>
+  </div>
+
 
 </div>

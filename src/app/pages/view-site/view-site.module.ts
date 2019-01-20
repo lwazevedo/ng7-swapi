@@ -3,9 +3,9 @@ import { SharedModule } from '../../shared/shared.module';
 
 
 import { ViewSiteRoutingModule } from './view-site-routing.module';
-import { ViewListComponent } from './view-list/view-list.component';
-import { ViewDetailComponent } from './view-detail/view-detail.component';
-import { ViewComponent } from './view/view.component';
+import { ViewListComponent } from './components/view-list/view-list.component';
+import { ViewDetailComponent } from './components/view-detail/view-detail.component';
+import { ViewComponent } from './components/view/view.component';
 
 
 @NgModule({

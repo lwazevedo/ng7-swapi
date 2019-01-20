@@ -4,8 +4,8 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Site } from '../shared/site.model';
-import { SiteService } from '../shared/site.service';
+import { Site } from '../../shared/site.model';
+import { SiteService } from '../../shared/site.service';
 
 
 

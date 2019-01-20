@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SiteService } from '../shared/site.service';
-import { Site } from '../shared/site.model';
+import { SiteService } from '../../shared/site.service';
+import { Site } from '../../shared/site.model';
 
 @Component({
   selector: 'app-view-detail',

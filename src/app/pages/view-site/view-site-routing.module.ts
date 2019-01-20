@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ViewComponent } from './view/view.component';
-import { ViewListComponent } from './view-list/view-list.component';
-import { ViewDetailComponent } from './view-detail/view-detail.component';
+import { ViewComponent } from './components/view/view.component';
+import { ViewListComponent } from './components/view-list/view-list.component';
+import { ViewDetailComponent } from './components/view-detail/view-detail.component';
 
 const routes: Routes = [{
   path: '',

@@ -1,0 +1,80 @@
+<div class="container ">
+  <section class="content-header">
+    <h2 class="page-header">Movie detail
+      <a (click)="backHome()" class="search-link pull-right">
+        <span><small></small></span> <i class="fa fa-mail-reply"></i>
+      </a>
+    </h2>
+  </section>
+  <section class="invoice">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="page-header">
+          <i class="fa  fa-video-camera"></i> {{resources.title}}
+          <small class="pull-right">Release date: {{resources.release_date}}</small>
+        </h2>
+      </div>
+      <!-- /.col -->
+    </div>
+    <div class="row invoice-info">
+      <div class="col-sm-4 invoice-col">
+        Director
+        <address>
+          <strong>{{resources.director}}</strong><br>
+        </address>
+        Producer
+        <address>
+          <strong>{{resources.producer}}</strong><br>
+        </address>
+        Episode
+        <address>
+          <strong>{{resources.episode_id}}</strong><br>
+        </address>
+      </div>
+      <!-- /.col -->
+      <div class="col-sm-8 invoice-col">
+        Opening Crawl
+        <address>
+          <strong>{{resources.opening_crawl}}</strong><br>
+        </address>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="lead">Other information</p>
+
+        <div class="table-responsive">
+          <table class="table">
+            <tr *ngIf="resources?.characters?.length > 0">
+              <th style="width:50%">Characters:</th>
+              <td><span class="badge bg-red">{{resources.characters.length}}</span></td>
+              <td><button (click)="viewDetail(resources.characters)" type="button" class="btn btn-primary btn-xs btn-flat ">View</button></td>
+            </tr>
+            <tr *ngIf="resources?.planets?.length > 0">
+              <th>Planets:</th>
+              <td><span class="badge bg-red">{{resources.planets.length}}</span></td>
+              <td><button (click)="viewDetail(resources.planets)" type="button" class="btn btn-primary btn-xs btn-flat ">View</button></td>
+            </tr>
+            <tr *ngIf="resources?.starships?.length > 0">
+              <th>Starships:</th>
+              <td><span class="badge bg-red">{{resources.starships.length}}</span></td>
+              <td><button (click)="viewDetail(resources.starships)" type="button" class="btn btn-primary btn-xs btn-flat ">View</button></td>
+            </tr>
+            <tr *ngIf="resources?.vehicles?.length > 0">
+              <th>Vehicles:</th>
+              <td><span class="badge bg-red">{{resources.vehicles.length}}</span></td>
+              <td><button (click)="viewDetail(resources.vehicles)" type="button" class="btn btn-primary btn-xs btn-flat ">View</button></td>
+            </tr>
+            <tr *ngIf="resources?.species?.length > 0">
+              <th>Species:</th>
+              <td><span class="badge bg-red">{{resources.species.length}}</span></td>
+              <td><button (click)="viewDetail(resources.species)" type="button" class="btn btn-primary btn-xs btn-flat ">View</button></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <!-- /.col -->
+    </div>
+  </section>
+
+</div>

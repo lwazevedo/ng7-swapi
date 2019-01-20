@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" [@listAppeared]="listState">
     <div class="col-xs-12">
       <ng-container *ngFor="let film of resources.results | paginate: { id: 'server', itemsPerPage: 10, currentPage: p , totalItems: resources.count}">
         <div class="col-sm-4 col-xs-12">
@@ -46,7 +46,7 @@
             <div class="icon">
               <i class="fa fa-video-camera"></i>
             </div>
-            <a class="small-box-footer color-text-star">
+            <a  (click)="detailFilm(film.url)" class="small-box-footer color-text-star">
               More info <i class="fa fa-arrow-circle-right"></i>
             </a>
           </div>

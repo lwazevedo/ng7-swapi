@@ -1,7 +1,7 @@
 import { BaseResourceModel } from '../models/base-resource.model';
 import { Injector } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { Observable, throwError, forkJoin } from 'rxjs';
+import { map, catchError, concatAll } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -23,7 +23,23 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
         );
     }
 
+    getOne(_id: number): Observable<T[]> {
+        return this.http.get(`${this.apiPath}/${_id}`).pipe(
+            map(this.jsonDataToResource.bind(this)),
+            catchError(this.handleError)
+        );
+    }
+
+    getMultipleAll(urls: string[]): Observable<T[]> {
+        return <Observable<T[]>>forkJoin(urls.map(url => this.http.get(url)))
+            .pipe(concatAll());
+    }
+
     // All methods proteted
+
+    protected getItems(urls: string[]) {
+        return urls.map(url => this.http.get(url));
+    }
     protected jsonDataToResources(jsonData: any[]): T[] {
         const resources: T[] = [];
         jsonData.forEach(

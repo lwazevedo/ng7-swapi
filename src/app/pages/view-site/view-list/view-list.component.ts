@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {trigger, state, style, transition, animate} from '@angular/animations';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Site } from '../shared/site.model';
 import { SiteService } from '../shared/site.service';
@@ -24,6 +25,13 @@ import { SiteService } from '../shared/site.service';
         'margin-top': '0px'
       })),
       transition('* => *', animate('250ms 0s ease-in-out'))
+    ]),
+    trigger('listAppeared', [
+      state('ready', style({opacity: 1})),
+      transition('void => ready', [
+        style({opacity: 0, transform: 'translate(-30px, -10px)'}),
+        animate('300ms 0s ease-in-out')
+      ])
     ])
   ]
 })
@@ -31,11 +39,16 @@ export class ViewListComponent implements OnInit {
 
   resources: Site[] = [];
   searchBarState = 'hidden';
+  listState = 'ready';
   p = 1;
   searchForm: FormGroup;
   searchControl: FormControl;
 
-  constructor(private resourceService: SiteService, private fb: FormBuilder) { this.search() }
+  constructor(
+    private resourceService: SiteService,
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute) { this.search(); }
 
   ngOnInit() {
     this.resourceService.getAll().subscribe(
@@ -64,9 +77,14 @@ export class ViewListComponent implements OnInit {
     );
   }
 
-  toggleSearch(){
+  toggleSearch() {
     this.searchBarState = this.searchBarState === 'hidden' ? 'visible' : 'hidden';
   }
 
-}
+  detailFilm(id) {
+    console.log('aqui');
+    id = btoa(id.match(/\d/g)[0]).toString();
+    this.router.navigate(['/site/detail', id], {relativeTo: this.route});
+  }
 
+}

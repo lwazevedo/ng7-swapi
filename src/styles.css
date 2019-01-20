@@ -72,3 +72,11 @@ ul.ngx-pagination {
 .btn-app {
   color: #fff !important;
 }
+
+.small-box>.small-box-footer {
+  cursor: pointer !important;
+}
+
+.star-background {
+  background-color: #f7f7f7 !important;
+}

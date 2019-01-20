@@ -1,79 +1,8 @@
 <ng-container *ngIf="viewDetail" [@viewDeitalItem]="viewDetailItemState">
-    <h2 class="page-header">
-      <i class="fa  fa-video-camera"></i> {{dataDetail.name}}
-      <a (click)="viewDetail = false" class="search-link pull-right">
-        <i class="fa fa-mail-reply"></i>
-      </a>
-    </h2>
-    <div class="row invoice-info">
-      <div class="col-sm-4 invoice-col">
-        Model
-        <address>
-          <strong>{{dataDetail.model}}</strong><br>
-        </address>
-        Manufacturer
-        <address>
-          <strong>{{dataDetail.manufacturer}}</strong><br>
-        </address>
-        Cost in Credits
-        <address>
-          <strong>{{dataDetail.cost_in_credits}}</strong><br>
-        </address>
-        Length
-        <address>
-          <strong>{{dataDetail.length}}</strong><br>
-        </address>
-      </div>
-      <!-- /.col -->
-      <div class="col-sm-8 invoice-col">
-        Max Atmosphering Speed
-        <address>
-          <strong>{{dataDetail.max_atmosphering_speed}}</strong><br>
-        </address>
-        Crew
-        <address>
-          <strong>{{dataDetail.crew}}</strong><br>
-        </address>
-        Passengers
-        <address>
-          <strong>{{dataDetail.passengers}}</strong><br>
-        </address>
-        Cargo Capacity
-        <address>
-          <strong>{{dataDetail.cargo_capacity}}</strong><br>
-        </address>
-        Consumables
-        <address>
-          <strong>{{dataDetail.consumables}}</strong><br>
-        </address>
-        Vehicle Class
-        <address>
-          <strong>{{dataDetail.vehicle_class}}</strong><br>
-        </address>
-        Pilots
-        <address>
-          <strong>{{dataDetail.pilots.length}}</strong><br>
-        </address>
-      </div>
-    </div>
-  </ng-container>
-  <br>
-  <div class="row" *ngIf="data.length > 0 && !viewDetail">
-    <div class="col-xs-12">
-      <pagination-controls (pageChange)="p = $event" id="server" class="pull-right"></pagination-controls>
-      <div class="table-responsive">
-        <table class="table">
-          <tr>
-            <th style="width:50%">Name</th>
-            <th>Model</th>
-          </tr>
-          <tr *ngFor="let item of data | paginate: { id: 'server', itemsPerPage: 10, currentPage: p , totalItems: data.length}">
-            <td>{{item.name}}</td>
-            <td>{{item.model}}</td>
-            <td><button type="button" (click)="viewDetailItem(item)" class="btn btn-primary btn-xs btn-flat ">View</button></td>
-          </tr>
-        </table>
-      </div>
-    </div>
-    <!-- /.col -->
-  </div>
+  <app-head [title]="dataDetail.name" (ocultViewDetail)='ocultViewDetail($event)'></app-head>
+  <app-info [data]="dataDetail" [omit]="['films','created','url','edited']" ></app-info>
+</ng-container>
+<br>
+<ng-container *ngIf="data.length > 0 && !viewDetail">
+    <app-list [data]="data" (viewDetailItem)="viewDetailItem($event)"></app-list>  
+</ng-container>

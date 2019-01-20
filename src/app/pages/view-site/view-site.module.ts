@@ -11,9 +11,12 @@ import { PlanetsComponent } from './components/planets/planets.component';
 import { StarshipsComponent } from './components/starships/starships.component';
 import { VehiclesComponent } from './components/vehicles/vehicles.component';
 import { SpeciesComponent } from './components/species/species.component';
+import { HeadComponent } from './components/head/head.component';
+import { InfoComponent } from './components/info/info.component';
+import { ListComponent } from './components/list/list.component';
 
 @NgModule({
-  declarations: [ViewListComponent, ViewDetailComponent, ViewComponent, CharactersComponent, PlanetsComponent, StarshipsComponent, VehiclesComponent, SpeciesComponent],
+  declarations: [ViewListComponent, ViewDetailComponent, ViewComponent, CharactersComponent, PlanetsComponent, StarshipsComponent, VehiclesComponent, SpeciesComponent, HeadComponent, InfoComponent, ListComponent],
   imports: [
     SharedModule,
     ViewSiteRoutingModule

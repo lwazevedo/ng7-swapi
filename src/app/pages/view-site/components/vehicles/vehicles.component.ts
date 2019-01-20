@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import * as _ from 'lodash';
+
 
 @Component({
   selector: 'app-vehicles',
@@ -25,14 +27,18 @@ export class VehiclesComponent implements OnInit {
   viewDetail = false;
   viewDetailItemState = 'hidden';
   dataDetail;
-  p = 1;
   constructor() { }
 
   ngOnInit() {
   }
-  viewDetailItem(item) {
+  viewDetailItem(info) {
     this.viewDetailItemState = this.viewDetailItemState === 'hidden' ? 'visible' : 'hidden';
-    this.viewDetail = true;
-    this.dataDetail = item;
+    this.viewDetail = info['viewDetail'];
+    this.dataDetail = info['dataDetail'];
   }
+
+  ocultViewDetail(ocult) {
+    this.viewDetail = ocult['viewDetail'];
+  }
+
 }

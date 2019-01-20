@@ -32,6 +32,8 @@ export class ViewDetailComponent implements OnInit {
 
   viewDetail(details: string[]) {
     this.otherInformation = [];
+    this.dataDetail = {};
+    this.viewList = false;
     this.resourceService.getMultipleAll(details)
     .subscribe(otherInformation => this.otherInformation.push(otherInformation));
   }

@@ -13,6 +13,9 @@ export class ViewDetailComponent implements OnInit {
   paramURL: string;
   resources: Site[] = [];
   otherInformation = [];
+  viewList = false;
+  viewDetailItemState = 'hidden';
+  dataDetail;
   constructor(private route: ActivatedRoute, private router: Router,  private resourceService: SiteService) { }
 
   ngOnInit() {
@@ -31,6 +34,16 @@ export class ViewDetailComponent implements OnInit {
     this.otherInformation = [];
     this.resourceService.getMultipleAll(details)
     .subscribe(otherInformation => this.otherInformation.push(otherInformation));
+  }
+
+  viewDetailItem(info) {
+    this.viewDetailItemState = this.viewDetailItemState === 'hidden' ? 'visible' : 'hidden';
+    this.viewList = info['viewDetail'];
+    this.dataDetail = info['dataDetail'];
+  }
+
+  ocultViewDetail(ocult) {
+    this.viewList = ocult['viewDetail'];
   }
 
   backHome() {

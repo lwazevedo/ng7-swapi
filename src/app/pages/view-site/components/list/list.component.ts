@@ -15,7 +15,7 @@ export class ListComponent implements OnInit {
   }
 
   viewDetail(info) {
-    this.viewDetailItem.emit({viewDetail: true, dataDetail: info});
+    this.viewDetailItem.emit({ viewDetail: true, dataDetail: info });
   }
 
 }

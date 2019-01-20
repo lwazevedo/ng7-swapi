@@ -26,7 +26,7 @@
         </ul>
         <div class="tab-content">
           <div class="tab-pane active" id="tab_1">
-            <app-head [title]="resources?.title" [ocultIcon]="false"></app-head>
+            <app-head [title]="resources?.title" [ocultIcon]="true"></app-head>
             <app-info [data]="resources" [view]="['director', 'producer', 'episode_id', 'opening_crawl']"></app-info>
           </div>
           <!-- /.tab-pane -->
@@ -45,7 +45,14 @@
           <!-- /.tab-pane -->
           <!-- /.tab-pane -->
           <div class="tab-pane" id="tab_5">
-            <app-vehicles [data]="otherInformation"></app-vehicles>
+            <ng-container *ngIf="viewList"  [@viewDeitalItem]="viewDetailItemState">
+              <app-head [title]="dataDetail.name" [ocultIcon]="false" (ocultViewDetail)='ocultViewDetail($event)'></app-head>
+              <app-info [data]="dataDetail" [omit]="['films','created','url','edited']"></app-info>
+            </ng-container>
+            <ng-container *ngIf="otherInformation.length > 0 && !viewList">
+              <app-list [data]="otherInformation" (viewDetailItem)="viewDetailItem($event)"></app-list>
+            </ng-container> 
+            <!-- <app-vehicles [data]="otherInformation"></app-vehicles> -->
           </div>
           <!-- /.tab-pane -->
           <!-- /.tab-pane -->

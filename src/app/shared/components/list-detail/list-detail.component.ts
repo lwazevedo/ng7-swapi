@@ -17,8 +17,10 @@ export class ListDetailComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.headtable = this.view || this.omit;
-    this.headtable = this.headtable.map(value => this.transformData(value));
+    this.headtable = this.view || this.omit || [];
+    if (this.headtable.length > 0) {
+      this.headtable = this.headtable.map(value => this.transformData(value));
+    }
   }
 
   viewDetail(info) {
